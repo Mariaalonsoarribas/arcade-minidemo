@@ -9,11 +9,22 @@ If Python and Arcade are installed, this example can be run from the command lin
 python -m arcade.examples.sprite_collect_coins
 """
 
+"""
+Sprite Collect Coins
+
+Simple program to show basic sprite usage.
+
+Artwork from https://kenney.nl
+
+If Python and Arcade are installed, this example can be run from the command line with:
+python -m arcade.examples.sprite_collect_coins
+"""
+
 import random
 import arcade
 
 # --- Constants ---
-SPRITE_SCALING_PLAYER = 0.5
+SPRITE_SCALING_PLAYER = 0.05
 SPRITE_SCALING_COIN = .25
 COIN_COUNT = 50
 
@@ -41,7 +52,6 @@ class MyGame(arcade.Window):
         # Don't show the mouse cursor
         self.set_mouse_visible(False)
 
-        arcade.set_background_color(arcade.color.AMAZON)
 
     def setup(self):
         """ Set up the game and initialize the variables. """
@@ -55,7 +65,7 @@ class MyGame(arcade.Window):
 
         # Set up the player
         # Character image from kenney.nl
-        img = ":resources:images/animated_characters/female_person/femalePerson_idle.png"
+        img = "/home/videojuegos/PycharmProjects/arcade-minidemo/Bowser_-_Mario_Party_10.webp"
         self.player_sprite = arcade.Sprite(img, SPRITE_SCALING_PLAYER)
         self.player_sprite.center_x = 50
         self.player_sprite.center_y = 50
@@ -66,7 +76,7 @@ class MyGame(arcade.Window):
 
             # Create the coin instance
             # Coin image from kenney.nl
-            coin = arcade.Sprite(":resources:images/items/coinGold.png",
+            coin = arcade.Sprite("/home/videojuegos/PycharmProjects/arcade-minidemo/Super_Champi n_SMB.png",
                                  SPRITE_SCALING_COIN)
 
             # Position the coin
@@ -79,6 +89,12 @@ class MyGame(arcade.Window):
     def on_draw(self):
         """ Draw everything """
         self.clear()
+
+        self.background = None
+        self.background = arcade.load_texture("/home/videojuegos/PycharmProjects/arcade-minidemo/e9a5741d04f9f718e67660cd309d62df.jpg")
+        arcade.draw_lrwh_rectangle_textured(0, 0,
+                                                    SCREEN_WIDTH, SCREEN_HEIGHT,
+                                                    self.background)
         self.coin_list.draw()
         self.player_list.draw()
 
